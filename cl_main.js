@@ -169,7 +169,7 @@ function drawText(
  * @param {number} ms
  * @param {number} target
  */
-const showRP_underhead = (
+const showRP_abovehead = (
   amount,
   type = "rp",
   ms = 1500,
@@ -217,8 +217,8 @@ const showRP_underhead = (
   });
 };
 
-on("showIconUnderhead", (amount, type, ms, target) => {
-  showRP_underhead(amount, type, ms, target);
+on("showIconAbovehead", (amount, type, ms, target) => {
+  showRP_abovehead(amount, type, ms, target);
 });
 
 function getEntityFromNetworkIdFast(netId) {
@@ -227,9 +227,9 @@ function getEntityFromNetworkIdFast(netId) {
     : null;
 }
 
-onNet("showIconUnderheadServer", (amount, type, ms, targetNet) => {
+onNet("showIconAboveheadServer", (amount, type, ms, targetNet) => {
   const ped = targetNet
     ? getEntityFromNetworkIdFast(targetNet)
     : GetPlayerPed(-1);
-  if (ped) showRP_underhead(amount, type, ms, ped);
+  if (ped) showRP_abovehead(amount, type, ms, ped);
 });
